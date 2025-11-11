@@ -58,8 +58,7 @@
             <tr><td>Address :</td><td><input type="text"></td></tr>
 
             <tr><td>Gender :</td>
-            <td>
-                <input type="radio" name="PC"> Male
+            <td><input type="radio" name="PC"> Male
                 <input type="radio" name="PC"> Female 
             </td>
             </tr>
@@ -85,8 +84,8 @@
         <br>
 
         <center>
-            <input type="reset" style="padding:8px 20px;"> 
-            <input type="submit" style="padding:8px 20px;background-color:orange;color:white;border:none;">
+            <input type="reset"> 
+            <input type="submit">
         </center>
 
     </div>
