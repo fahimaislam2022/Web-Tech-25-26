@@ -1,10 +1,3 @@
-Below is the **final corrected code** with **label tags added**, **date input kept as type="date"**, **validation same as required**, and **same simple structure** like your sample.
-
----
-
-# ✅ **FINAL CODE (With Labels + Date Input + Validation)**
-
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,8 +105,4 @@ function handleSubmit() {
 
 </body>
 </html>
-```
 
----
-
-If you want it spaced exactly like your classroom sample code, I can adjust indentation/style too—just tell me!
