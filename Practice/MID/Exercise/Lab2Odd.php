@@ -7,7 +7,7 @@
 <body>
 
 <center>
-    <h1 id="pagetitle">ABC University – Demo Registration & Course Selector</h1>
+    <h1>ABC University  Demo Registration & Course Selector</h1>
 </center>
 
 <!-- ============================
