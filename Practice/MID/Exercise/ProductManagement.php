@@ -1,3 +1,10 @@
+Below is the **final corrected code** with **label tags added**, **date input kept as type="date"**, **validation same as required**, and **same simple structure** like your sample.
+
+---
+
+# ✅ **FINAL CODE (With Labels + Date Input + Validation)**
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,33 +12,33 @@
 </head>
 <body>
 
-<center>
-<h1>Product Inventory Management</h1>
-</center>
+<center><h2>Product Inventory Management</h2></center>
 
-<form onsubmit="return validateProduct()">
+<form onsubmit="return handleSubmit()">
 
-    <label>Product Name:</label><br>
-    <input type="text" id="productName"><br><br>
+    <label>Product Name:</label>
+    <input type="text" id="pname"><br><br>
 
-    <label>Price:</label><br>
+    <label>Price:</label>
     <input type="number" id="price"><br><br>
 
-    <label>Quantity in Stock:</label><br>
+    <label>Quantity in Stock:</label>
     <input type="number" id="quantity"><br><br>
 
-    <label>Category:</label><br>
+    <label>Category:</label>
     <select id="category">
         <option value="">-- Select Category --</option>
         <option value="Electronics">Electronics</option>
-        <option value="Clothing">Clothing</option>
-        <option value="Food">Food</option>
-    </select><br><br>
+        <option value="Fashion">Fashion</option>
+        <option value="Grocery">Grocery</option>
+    </select>
+    <br><br>
 
-    <label>Expiry Date:</label><br>
-    <input type="text" id="expiry" placeholder="DD-MM-YYYY"><br><br>
+    <label>Expiry Date (DD-MM-YYYY):</label>
+    <input type="date" id="expdate">
+    <br><br>
 
-    <button type="submit">Add Product</button>
+    <button type="submit">Submit</button>
 
 </form>
 
@@ -39,13 +46,14 @@
 <div id="output"></div>
 
 <script>
-function validateProduct()
-{
-    var name = document.getElementById("productName").value.trim();
+
+function handleSubmit() {
+
+    var pname = document.getElementById("pname").value.trim();
     var price = document.getElementById("price").value.trim();
     var quantity = document.getElementById("quantity").value.trim();
     var category = document.getElementById("category").value;
-    var expiry = document.getElementById("expiry").value.trim();
+    var expdate = document.getElementById("expdate").value;
 
     var errorDiv = document.getElementById("error");
     var outputDiv = document.getElementById("output");
@@ -53,51 +61,59 @@ function validateProduct()
     errorDiv.innerHTML = "";
     outputDiv.innerHTML = "";
 
-    // Validation
-    if (name === "" || price === "" || quantity === "" || category === "" || expiry === "")
-    {
-        errorDiv.innerHTML = "All fields are required.";
+    // Rule 1: All fields required
+    if (pname === "" || price === "" || quantity === "" || category === "" || expdate === "") {
+        errorDiv.innerHTML = "Please fill in all fields.";
         return false;
     }
 
-    if (isNaN(price) || Number(price) <= 0)
-    {
-        errorDiv.innerHTML = "Price must be a number greater than 0.";
+    // Rule 2: Price must be greater than 0
+    if (price <= 0) {
+        errorDiv.innerHTML = "Price must be more than 0.";
         return false;
     }
 
-    if (isNaN(quantity) || Number(quantity) < 0)
-    {
+    // Rule 3: Quantity must be a number
+    if (isNaN(quantity)) {
         errorDiv.innerHTML = "Quantity must be a number.";
         return false;
     }
 
-    // Check expiry date format DD-MM-YYYY
-    var datePattern = /^([0-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\d{4}$/;
-    if (!datePattern.test(expiry))
-    {
-        errorDiv.innerHTML = "Expiry date must be in DD-MM-YYYY format.";
+    // Convert YYYY-MM-DD → DD-MM-YYYY
+    var parts = expdate.split("-");
+    var formattedDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+
+    // Rule 4: Validate DD-MM-YYYY format
+    var pattern = /^\d{2}-\d{2}-\d{4}$/;
+    if (!pattern.test(formattedDate)) {
+        errorDiv.innerHTML = "Date must be in DD-MM-YYYY format.";
         return false;
     }
 
-    outputDiv.innerHTML = 
-        "Product Added Successfully!<br><br>" +
-        "Name: " + name + "<br>" +
-        "Price: " + price + "<br>" +
-        "Quantity: " + quantity + "<br>" +
-        "Category: " + category + "<br>" +
-        "Expiry Date: " + expiry;
+    // Rule 5: Category must be selected
+    if (category === "") {
+        errorDiv.innerHTML = "Please select a category.";
+        return false;
+    }
 
-    // Clear input fields
-    document.getElementById("productName").value = "";
-    document.getElementById("price").value = "";
-    document.getElementById("quantity").value = "";
-    document.getElementById("category").value = "";
-    document.getElementById("expiry").value = "";
+    outputDiv.innerHTML = `
+        <strong>Product Added Successfully!</strong><br><br>
+        Product Name: ${pname}<br>
+        Price: ${price}<br>
+        Quantity: ${quantity}<br>
+        Category: ${category}<br>
+        Expiry Date: ${formattedDate}
+    `;
 
     return false;
 }
+
 </script>
 
 </body>
 </html>
+```
+
+---
+
+If you want it spaced exactly like your classroom sample code, I can adjust indentation/style too—just tell me!
