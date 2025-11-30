@@ -1,117 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ABC University Demo System</title>
+    <title>ABC University Demo</title>
 </head>
 
 <body>
 
 <center>
-    <h1 id="pagetitle">ABC University – Demo Registration & Course Selector</h1>
+    <h1>ABC University Student Onboarding Demo</h1>
 </center>
 
-<!-- ============================
-     STUDENT REGISTRATION SECTION
-     ============================ -->
 <h2>Student Registration</h2>
 
+<!-- Registration Form -->
 <form onsubmit="return registerStudent()">
-    <label>Full Name:</label><br>
+    Full Name: <br>
     <input type="text" id="fullname"><br><br>
 
-    <label>Email:</label><br>
+    Email: <br>
     <input type="text" id="email"><br><br>
 
-    <label>Password:</label><br>
-    <input type="password" id="password"><br><br>
+    Password: <br>
+    <input type="password" id="pass"><br><br>
 
-    <label>Confirm Password:</label><br>
-    <input type="password" id="confirmpass"><br><br>
+    Confirm Password: <br>
+    <input type="password" id="cpass"><br><br>
 
     <button type="submit">Register</button>
 </form>
 
+<br>
 <div id="regOutput"></div>
 
-<br><hr><br>
+<hr>
 
-<!-- ============================
-     COURSE SELECTION SECTION
-     ============================ -->
 <h2>Course Selection</h2>
 
-<label>Course Name:</label><br>
-<input type="text" id="courseName"><br><br>
-
+Enter Course Name: <br>
+<input type="text" id="courseInput">
 <button onclick="addCourse()">Add Course</button>
 
-<h3>Selected Courses:</h3>
-<ul id="courseList"></ul>
+<br><br>
+
+<div id="courseList"></div>
 
 <script>
 
-// =========================
-// STUDENT REGISTRATION LOGIC
-// =========================
+// ===============================
+// STUDENT REGISTRATION VALIDATION
+// ===============================
+
 function registerStudent() {
+
     var name = document.getElementById("fullname").value.trim();
     var email = document.getElementById("email").value.trim();
-    var pass = document.getElementById("password").value.trim();
-    var conf = document.getElementById("confirmpass").value.trim();
-
-    // Validation
-    if (name === "" || email === "" || pass === "" || conf === "") {
-        alert("Please fill in all fields.");
-        return false;
-    }
-
-    if (!email.includes("@")) {
-        alert("Email must contain '@'.");
-        return false;
-    }
-
-    if (pass !== conf) {
-        alert("Passwords do not match.");
-        return false;
-    }
-
-    // Show success message
+    var pass = document.getElementById("pass").value.trim();
+    var cpass = document.getElementById("cpass").value.trim();
     var output = document.getElementById("regOutput");
+
+    output.innerHTML = "";
+
+    // Required field validation
+    if (name === "" || email === "" || pass === "" || cpass === "") {
+        alert("All fields are required!");
+        return false;
+    }
+
+    // Email validation
+    if (!email.includes("@")) {
+        alert("Invalid email! Email must contain '@' ");
+        return false;
+    }
+
+    // Password match check
+    if (pass !== cpass) {
+        alert("Passwords do not match!");
+        return false;
+    }
+
+    // Success output
     output.innerHTML = `
         <h3>Registration Successful!</h3>
-        Name: ${name}<br>
-        Email: ${email}<br>
+        Full Name: ${name} <br>
+        Email: ${email} <br>
     `;
 
     return false;
 }
 
 
+// ===============================
+// COURSE ADD & DELETE USING DOM
+// ===============================
 
-// =========================
-// COURSE SELECTION LOGIC
-// =========================
 function addCourse() {
-    var course = document.getElementById("courseName").value.trim();
+    var courseName = document.getElementById("courseInput").value.trim();
+    var listDiv = document.getElementById("courseList");
 
-    if (course === "") {
+    if (courseName === "") {
         alert("Please enter a course name.");
         return;
     }
 
-    // Create list item
-    var li = document.createElement("li");
-    li.innerHTML = `${course} 
-        <button onclick="deleteCourse(this)">Delete</button>`;
+    var item = document.createElement("div");
 
-    document.getElementById("courseList").appendChild(li);
+    item.innerHTML = `
+        ${courseName}
+        <button onclick="this.parentNode.remove()">Delete</button>
+        <br><br>
+    `;
 
-    document.getElementById("courseName").value = "";
-}
+    listDiv.appendChild(item);
 
-function deleteCourse(btn) {
-    var li = btn.parentElement;
-    li.remove();
+    document.getElementById("courseInput").value = "";
 }
 
 </script>

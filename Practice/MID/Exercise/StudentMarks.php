@@ -5,8 +5,8 @@
 </head>
 
 <body>
-<center>
-<h2> Student Marks Form </h2>
+
+<h1> Student Marks Form </h1>
 
 <label>Name:</label>
 <input type="text" id="name">
@@ -20,13 +20,13 @@
 
 <br><br>
 
-<table id="datatable" border="4" style="border-color: black;">
+<table id="datatable">
     <tr>
         <th>Name</th>
         <th>Marks</th>
     </tr>
 </table>
-</center>
+
 
 <script>
 
