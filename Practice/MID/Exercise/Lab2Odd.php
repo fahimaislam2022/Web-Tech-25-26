@@ -43,9 +43,9 @@
 <label>Course Name:</label><br>
 <input type="text" id="courseName"><br><br>
 
-<button onclick="addCourse()">Add Course</button>
+<button onclick="addCourse()">Add Course</button><br><br>
 
-<h3>Selected Courses:</h3>
+<label>Selected Courses:</label>
 <ul id="courseList"></ul>
 
 <script>
