@@ -5,15 +5,13 @@
 
     <style>
         .box{
-            width: 150px;
-            height: 150px;
+           
             position: absolute;
-            color: white;
-            padding: 10px;
+           
         }
         #b1{ background-color: red; top: 50px; left: 50px; z-index: 1; }
-        #b2{ background-color: blue; top: 90px; left: 90px; z-index: 2; }
-        #b3{ background-color: green; top: 130px; left: 130px; z-index: 3; }
+        #b2{ background-color: blue; top: 60px; left: 60px; z-index: 2; }
+        #b3{ background-color: green; top: 70px; left: 70px; z-index: 3; }
     </style>
 
 </head>

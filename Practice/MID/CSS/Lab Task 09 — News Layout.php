@@ -6,7 +6,7 @@
     <style>
         .side, .main, .ad{
             display: inline-block;
-            vertical-align: top;
+            float: left;
             padding: 10px;
             border: 2px solid black;
             margin: 5px;

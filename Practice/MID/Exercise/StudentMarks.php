@@ -7,17 +7,17 @@
 <body>
 
 <h1> Student Marks Form </h1>
-
+<form onsubmit="return submitData()">
 <label>Name:</label>
 <input type="text" id="name">
 <br><br>
 <label>Marks:</label>
 <input type="number" id="marks">
 <br><br>
-<button onclick="submitData()">Submit</button>
+<button type="submit">Submit</button>
 
 <div id="error"></div>
-
+</form>
 <br><br>
 
 <table id="datatable">
