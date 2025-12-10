@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Rooms</title>
+</head>
+<body>
+
+<h2>Manage Room Types</h2>
+
+<form id="roomForm">
+    Room Type: <input type="text" id="rtype"><br><br>
+    Price: <input type="number" id="rprice"><br><br>
+    Capacity: <input type="number" id="rcap"><br><br>
+    <button type="submit">Add Room</button>
+</form>
+
+<hr>
+
+<table border="1" id="roomTable">
+    <tr>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Capacity</th>
+        <th>Action</th>
+    </tr>
+</table>
+
+<p><a href="dashboard.html">Back</a></p>
+
+<script>
+document.getElementById("roomForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    var t = document.getElementById("rtype").value.trim();
+    var p = document.getElementById("rprice").value;
+    var c = document.getElementById("rcap").value;
+
+    if(t === "" || p === "" || c === "") {
+        alert("All fields required.");
+        return;
+    }
+
+    var tb = document.getElementById("roomTable");
+    var row = tb.insertRow(-1);
+    row.innerHTML = "<td>" + t + "</td><td>" + p + "</td><td>" + c + "</td>"
+        + "<td><button onclick='del(this)'>Delete</button></td>";
+
+    document.getElementById("roomForm").reset();
+});
+
+function del(btn){
+    btn.parentNode.parentNode.remove();
+}
+</script>
+
+</body>
+</html>
