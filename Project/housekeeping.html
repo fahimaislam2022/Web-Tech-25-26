@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Housekeeping Staff</title>
+</head>
+<body>
+<center>
+<h2>Housekeeping Staff</h2>
+
+
+<form id="hkForm">
+    Name: <input type="text" id="hkName" placeholder="Enter name"><br><br>
+
+    Gender:
+    <label><input type="radio" name="hkGender" value="Male"> Male</label>
+    <label><input type="radio" name="hkGender" value="Female"> Female</label>
+    <br><br>
+
+    Phone Number: <input type="tel" id="hkPhone" placeholder="Enter phone number"><br><br>
+    Date of Birth: <input type="date" id="hkDOB"><br><br>
+
+    <button type="submit">Add Staff</button>
+</form>
+
+<br>
+
+
+<table border="1" thickness="1" id="hkTable">
+    <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>DOB</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+</table>
+
+<p><a href="dashboard.html">Back</a></p>
+
+<script>
+let hkCounter = 1;
+
+
+function calculateAge(dob){
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
+
+document.getElementById("hkForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const name = document.getElementById("hkName").value.trim();
+    const genderEl = document.querySelector('input[name="hkGender"]:checked');
+    const phone = document.getElementById("hkPhone").value.trim();
+    const dob = document.getElementById("hkDOB").value;
+
+    if(name === "" || !genderEl || phone === "" || dob === ""){
+        alert("Please fill all fields.");
+        return;
+    }
+
+    const gender = genderEl.value;
+    const age = calculateAge(dob);
+
+    const table = document.getElementById("hkTable");
+    const row = table.insertRow(-1);
+
+    
+    row.innerHTML = `
+        <td>${hkCounter}</td>
+        <td>${name}</td>
+        <td>${age}</td>
+        <td>${gender}</td>
+        <td>${phone}</td>
+        <td>${dob}</td>
+        <td><span class="status">Available</span></td>
+        <td>
+            <button onclick="toggleStatus(this)">Toggle</button>
+            <button onclick="deleteStaff(this)">Delete</button>
+        </td>
+    `;
+
+    hkCounter++;
+    document.getElementById("hkForm").reset();
+});
+
+
+function toggleStatus(btn){
+    const row = btn.parentNode.parentNode;
+    const statusEl = row.querySelector(".status");
+    statusEl.innerText = (statusEl.innerText === "Available") ? "Busy" : "Available";
+}
+
+
+function deleteStaff(btn){
+    btn.parentNode.parentNode.remove();
+}
+</script>
+</center>
+</body>
+</html>
