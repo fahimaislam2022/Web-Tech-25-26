@@ -28,7 +28,7 @@
 <br>
 
 
-<table border="1" thickness="1" id="hkTable">
+<table border="1" thickness="1" id="housekeepingTable">
     <tr>
         <th>Number</th>
         <th>Name</th>
@@ -44,7 +44,7 @@
 <p><a href="dashboard.html">Back</a></p>
 
 <script>
-let hkCounter = 1;
+let housekeepingCounter = 1;
 
 
 function calculateAge(dob){
@@ -59,13 +59,13 @@ function calculateAge(dob){
 }
 
 
-document.getElementById("hkForm").addEventListener("submit", function(e){
+document.getElementById("housekeepingForm").addEventListener("submit", function(e){
     e.preventDefault();
 
-    const name = document.getElementById("hkName").value.trim();
-    const genderEl = document.querySelector('input[name="hkGender"]:checked');
-    const phone = document.getElementById("hkPhone").value.trim();
-    const dob = document.getElementById("hkDOB").value;
+    const name = document.getElementById("housekeepingName").value.trim();
+    const genderEl = document.querySelector('input[name="housekeepingGender"]:checked');
+    const phone = document.getElementById("housekeepingPhone").value.trim();
+    const dob = document.getElementById("housekeepingDOB").value;
 
     if(name === "" || !genderEl || phone === "" || dob === ""){
         alert("Please fill all fields.");
@@ -75,12 +75,12 @@ document.getElementById("hkForm").addEventListener("submit", function(e){
     const gender = genderEl.value;
     const age = calculateAge(dob);
 
-    const table = document.getElementById("hkTable");
+    const table = document.getElementById("housekeepingTable");
     const row = table.insertRow(-1);
 
     
     row.innerHTML = `
-        <td>${hkCounter}</td>
+        <td>${housekeepingCounter}</td>
         <td>${name}</td>
         <td>${age}</td>
         <td>${gender}</td>
@@ -93,8 +93,8 @@ document.getElementById("hkForm").addEventListener("submit", function(e){
         </td>
     `;
 
-    hkCounter++;
-    document.getElementById("hkForm").reset();
+    housekeepingCounter++;
+    document.getElementById("housekeepingForm").reset();
 });
 
 
