@@ -8,16 +8,19 @@
 <h2>Housekeeping Staff</h2>
 
 
-<form id="hkForm">
-    Name: <input type="text" id="hkName" placeholder="Enter name"><br><br>
+<form id="housekeepingForm" method="POST">
+    <label>Name</label><br>
+    <input type="text" id="housekeepingName" placeholder="Enter name"><br><br>
 
-    Gender:
-    <label><input type="radio" name="hkGender" value="Male"> Male</label>
-    <label><input type="radio" name="hkGender" value="Female"> Female</label>
+    <label>Gender</label><br>
+    <label><input type="radio" name="housekeepingGender" value="Male"> Male</label>
+    <label><input type="radio" name="housekeepingGender" value="Female"> Female</label>
     <br><br>
 
-    Phone Number: <input type="tel" id="hkPhone" placeholder="Enter phone number"><br><br>
-    Date of Birth: <input type="date" id="hkDOB"><br><br>
+     <label>Phone Number</label><br>
+    <input type="tel" id="housekeepingPhone" placeholder="Enter phone number"><br><br>
+    <label>Date of Birth:</label><br>
+    <input type="date" id="housekeepingDOB"><br><br>
 
     <button type="submit">Add Staff</button>
 </form>
