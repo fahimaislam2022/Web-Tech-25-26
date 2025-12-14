@@ -19,6 +19,8 @@
     <br><br>
 
     Price: <input type="number" id="rprice"><br><br>
+    Available From: <input type="date" id="fromDate"><br><br>
+    Available To: <input type="date" id="toDate"><br><br>
 
     Capacity: <br>
     <label><input type="radio" name="capacity" value="1"> 1 Person</label>
@@ -44,7 +46,7 @@
 <p><a href="dashboard.html">Back</a></p>
 
 <script>
-// Counter for room numbers
+
 let roomCounter = 1;
 
 document.getElementById("roomForm").addEventListener("submit", function(e){
@@ -52,7 +54,7 @@ document.getElementById("roomForm").addEventListener("submit", function(e){
 
     var t = document.getElementById("rtype").value.trim();
     var p = document.getElementById("rprice").value;
-
+    var d = document.getElementById("rdate").value;
     var c = document.querySelector('input[name="capacity"]:checked');
 
     if(t === "" || p === "" || c === null) {
@@ -69,10 +71,12 @@ document.getElementById("roomForm").addEventListener("submit", function(e){
         "<td>" + roomCounter + "</td>" +
         "<td>" + t + "</td>" +
         "<td>" + p + "</td>" +
+        "<td>" + f + "</td>" +
+        "<td>" + to + "</td>" +
         "<td>" + c + "</td>" +
         "<td><button onclick='del(this)'>Delete</button></td>";
 
-    roomCounter++; // Increment room number for next entry
+    roomCounter++;
     document.getElementById("roomForm").reset();
 });
 
