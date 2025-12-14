@@ -21,7 +21,7 @@
         <option value="Suite">Suite</option>
     </select>
     <br><br>
-
+    Booking Date: <input type="date" id="bdate"><br><br>
     Price Per Night: <input type="number" id="price"><br><br>
 
     Nights: <input type="number" id="nights"><br><br>
@@ -36,6 +36,7 @@
         <th>No.</th>
         <th>Customer Phone Number</th>
         <th>Type</th>
+        <th>Date</th>
         <th>Price</th>
         <th>Nights</th>
         <th>Total Bill</th>
@@ -53,14 +54,19 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
 
     var n = document.getElementById("custNumber").value.trim();
     var t = document.getElementById("roomType").value.trim();
+    var bd = document.getElementById("bdate").value;
     var p = document.getElementById("price").value;
     var d = document.getElementById("nights").value;
 
-    if(n === "" || t === "" || p === "" || d === ""){
+    if(n === "" || t === ""  || bd === "" || p === "" || d === ""){
         alert("All fields required.");
         return;
     }
 
+    if(isNaN(n)){
+        alert("Phone number must contain digits only.");
+        return;
+    }
     var total = p * d;
 
     var tb = document.getElementById("bookTable");
@@ -70,6 +76,7 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
         "<td>" + bookCounter + "</td>" +
         "<td>" + n + "</td>" +
         "<td>" + t + "</td>" +
+        "<td>" + bd + "</td>" +
         "<td>" + p + "</td>" +
         "<td>" + d + "</td>" +
         "<td>" + total + "</td>" +
