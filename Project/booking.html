@@ -8,11 +8,12 @@
 
 <h2>Booking & Billing Information</h2>
 
-<form id="bookingForm">
+<form id="bookingForm" method="POST" >
 
-    Customer Phone Number: <input type="tel" id="custNumber"><br><br>
+    <label>Customer Phone Number</label><br>
+    <input type="tel" id="customerNumber"><br><br>
 
-    Room Type:
+    <label>Room Type</label><br>
     <select id="roomType">
         <option value="">-- Select Room --</option>
         <option value="Single">Single</option>
@@ -21,10 +22,13 @@
         <option value="Suite">Suite</option>
     </select>
     <br><br>
-    Booking Date: <input type="date" id="bdate"><br><br>
-    Price Per Night: <input type="number" id="price"><br><br>
+    <label>Booking Date</label><br>
+    <input type="date" id="bdate"><br><br>
+    <label>Price Per Night</label><br>
+    <input type="number" id="price"><br><br>
 
-    Nights: <input type="number" id="nights"><br><br>
+   <label>Nights</label><br>
+   <input type="number" id="nights"><br><br>
 
     <button type="submit">Add Booking</button>
 </form>
