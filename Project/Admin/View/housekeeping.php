@@ -43,72 +43,7 @@
 
 <p><a href="dashboard.html">Back</a></p>
 
-<script>
-let housekeepingCounter = 1;
 
-
-function calculateAge(dob){
-    const birthDate = new Date(dob);
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
-}
-
-
-document.getElementById("housekeepingForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const name = document.getElementById("housekeepingName").value.trim();
-    const genderEl = document.querySelector('input[name="housekeepingGender"]:checked');
-    const phone = document.getElementById("housekeepingPhone").value.trim();
-    const dob = document.getElementById("housekeepingDOB").value;
-
-    if(name === "" || !genderEl || phone === "" || dob === ""){
-        alert("Please fill all fields.");
-        return;
-    }
-
-    const gender = genderEl.value;
-    const age = calculateAge(dob);
-
-    const table = document.getElementById("housekeepingTable");
-    const row = table.insertRow(-1);
-
-    
-    row.innerHTML = `
-        <td>${housekeepingCounter}</td>
-        <td>${name}</td>
-        <td>${age}</td>
-        <td>${gender}</td>
-        <td>${phone}</td>
-        <td>${dob}</td>
-        <td><span class="status">Available</span></td>
-        <td>
-            <button onclick="toggleStatus(this)">Toggle</button>
-            <button onclick="deleteStaff(this)">Delete</button>
-        </td>
-    `;
-
-    housekeepingCounter++;
-    document.getElementById("housekeepingForm").reset();
-});
-
-
-function toggleStatus(btn){
-    const row = btn.parentNode.parentNode;
-    const statusEl = row.querySelector(".status");
-    statusEl.innerText = (statusEl.innerText === "Available") ? "Busy" : "Available";
-}
-
-
-function deleteStaff(btn){
-    btn.parentNode.parentNode.remove();
-}
-</script>
 </center>
 </body>
 </html>

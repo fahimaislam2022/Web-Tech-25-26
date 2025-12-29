@@ -19,20 +19,7 @@
     <a href="changePassword.html">Change Password</a>
 </p>
 
-<script>
-document.getElementById("loginForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var u = document.getElementById("username").value.trim();
-    var p = document.getElementById("password").value;
-    if(u === "" || p === "") {
-        alert("Please enter username and password.");
-        return;
-    }
-    // In a real system this would be submitted to server.
-    // For this static prototype we redirect to dashboard.
-    window.location.href = "dashboard.html";
-});
-</script>
+
 </center>
 </body>
 </html>

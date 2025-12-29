@@ -33,39 +33,6 @@
 
 <p><a href="dashboard.html">Back</a></p>
 
-<script>
-let promoCounter = 1;
-
-document.getElementById("promoForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    var t = document.getElementById("title").value.trim();
-    var d = document.getElementById("discount").value;
-    var v = document.getElementById("valid").value;
-
-    if(t === "" || d === "" || v === ""){
-        alert("All fields required.");
-        return;
-    }
-
-    var tb = document.getElementById("promoTable");
-    var row = tb.insertRow(-1);
-
-    row.innerHTML =
-        "<td>" + promoCounter + "</td>" +
-        "<td>" + t + "</td>" +
-        "<td>" + d + "%</td>" +
-        "<td>" + v + "</td>" +
-        "<td><button onclick='del(this)'>Delete</button></td>";
-
-    promoCounter++;
-    document.getElementById("promoForm").reset();
-});
-
-function del(btn){
-    btn.parentNode.parentNode.remove();
-}
-</script>
 
 </center>
 </body>

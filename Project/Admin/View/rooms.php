@@ -50,45 +50,7 @@
 
 <p><a href="dashboard.html">Back</a></p>
 
-<script>
 
-let roomCounter = 1;
-
-document.getElementById("roomForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    var t = document.getElementById("rtype").value.trim();
-    var p = document.getElementById("rprice").value;
-    var d = document.getElementById("rdate").value;
-    var c = document.querySelector('input[name="capacity"]:checked');
-
-    if(t === "" || p === "" || c === null) {
-        alert("All fields required.");
-        return;
-    }
-
-    c = c.value;
-
-    var tb = document.getElementById("roomTable");
-    var row = tb.insertRow(-1);
-
-    row.innerHTML = 
-        "<td>" + roomCounter + "</td>" +
-        "<td>" + t + "</td>" +
-        "<td>" + p + "</td>" +
-        "<td>" + f + "</td>" +
-        "<td>" + to + "</td>" +
-        "<td>" + c + "</td>" +
-        "<td><button onclick='del(this)'>Delete</button></td>";
-
-    roomCounter++;
-    document.getElementById("roomForm").reset();
-});
-
-function del(btn){
-    btn.parentNode.parentNode.remove();
-}
-</script>
 </center>
 </body>
 </html>
