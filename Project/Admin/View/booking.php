@@ -50,50 +50,6 @@
 
 <p><a href="dashboard.html">Back</a></p>
 
-<script>
-let bookCounter = 1;
-
-document.getElementById("bookingForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    var n = document.getElementById("customerNumber").value.trim();
-    var t = document.getElementById("roomType").value.trim();
-    var bd = document.getElementById("bdate").value;
-    var p = document.getElementById("price").value;
-    var d = document.getElementById("nights").value;
-
-    if(n === "" || t === ""  || bd === "" || p === "" || d === ""){
-        alert("All fields required.");
-        return;
-    }
-
-    if(isNaN(n)){
-        alert("Phone number must contain digits only.");
-        return;
-    }
-    var total = p * d;
-
-    var tb = document.getElementById("bookTable");
-    var row = tb.insertRow(-1);
-
-    row.innerHTML =
-        "<td>" + bookCounter + "</td>" +
-        "<td>" + n + "</td>" +
-        "<td>" + t + "</td>" +
-        "<td>" + bd + "</td>" +
-        "<td>" + p + "</td>" +
-        "<td>" + d + "</td>" +
-        "<td>" + total + "</td>" +
-        "<td><button onclick='del(this)'>Delete</button></td>";
-
-    bookCounter++;
-    document.getElementById("bookingForm").reset();
-});
-
-function del(btn){
-    btn.parentNode.parentNode.remove();
-}
-</script>
 
 </center>
 </body>
