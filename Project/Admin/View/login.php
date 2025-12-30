@@ -29,6 +29,9 @@ session_start();
         <label>Password:</label>
         <input type="password" id="password" name="password" />
         <p id="passError" class="error"></p>
+        <label><input type="checkbox" name="remember"
+        <?php if(isset($_COOKIE['username'])) echo "checked"; ?>>
+        Remember Me</label><br><br>
 
         <button type="submit" name="submit">Login</button>
 
@@ -37,6 +40,7 @@ session_start();
         </p>
       </form>
 
+      <img http://localhost/Web%20Tech/Project/Admin/Image/Admin%20Login.png
       <div class="links">
         <a href="changePassword.php">Change Password</a>
       </div>

@@ -1,23 +1,16 @@
 document.getElementById("loginForm").addEventListener("submit", function (e) {
-  let valid = true;
-
   const username = document.getElementById("username");
   const password = document.getElementById("password");
-  const userError = document.getElementById("userError");
-  const passError = document.getElementById("passError");
-
-  userError.textContent = "";
-  passError.textContent = "";
+  let error = false;
 
   if (username.value.trim() === "") {
-    userError.textContent = "Please enter your username.";
-    valid = false;
+    alert("Please enter username!");
+    error = true;
   }
-
   if (password.value.trim() === "") {
-    passError.textContent = "Please enter your password.";
-    valid = false;
+    alert("Please enter password!");
+    error = true;
   }
 
-  if (!valid) e.preventDefault();
+  if (error) e.preventDefault();
 });
