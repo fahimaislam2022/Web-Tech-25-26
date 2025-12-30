@@ -3,8 +3,8 @@ session_start();
 @include("../db/connection.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST["username"]);
-    $password = trim($_POST["password"]);
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
     if (empty($username) || empty($password)) {
         $error = "All fields are required!";
@@ -12,10 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
         $result = $conn->query($sql);
 
-        if ($result && $result->num_rows > 0) {
+        if ($result->num_rows > 0) {
             $_SESSION["username"] = $username;
 
-            // ✅ Remember Me
+            
             if (isset($_POST["remember"])) {
                 setcookie("username", $username, time() + (86400 * 7), "/");
                 setcookie("password", $password, time() + (86400 * 7), "/");
